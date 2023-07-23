@@ -1,7 +1,7 @@
 # Caso práctico 2
 ### Crear una aplicación web móvil de bebidas usando el api TheCocktailDB 
 https://www.thecocktaildb.com/api.php
-####La aplicación debe contener lo siguiente:
+#### La aplicación debe contener lo siguiente:
 - Sección de búsqueda
   - Mostrar un formulario para buscar una bebida en específico, realizar la búsqueda y mostrar los resultados mediante una lista tipo catalogo
   - Cada elemento de la lista debe contener el nombre y la imagen de la bebida, así como un enlace para poder visualizar el detalle completo de la bebida en otra página a modo detalle.
