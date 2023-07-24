@@ -3,9 +3,10 @@ import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Suspense } from 'react'
 import { Loading } from './components'
-import { createTheme, ThemeProvider } from '@mui/material';
+import { createTheme, ThemeProvider } from '@mui/material'
 // Pages
-const Home = React.lazy(() => import('./pages/Home'));
+const Home = React.lazy(() => import('./pages/Home'))
+const Catalog = React.lazy(() => import('./pages/Catalog'))
 
 const theme = createTheme({
   palette: {
@@ -36,7 +37,7 @@ export default function App() {
       <Suspense fallback={<Loading />}>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/drink" element={<div>Element</div>} />
+          <Route path="/catalog/:id" element={<Catalog />} />
         </Routes>
       </Suspense>
     </BrowserRouter>

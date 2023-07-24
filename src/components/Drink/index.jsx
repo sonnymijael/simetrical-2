@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Box, Typography, Button, Grid } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 export default function Drink({ drink }) {
   const [isHovered, setIsHovered] = useState(false);
+  const navigate = useNavigate()
 
   return <Grid 
     item 
@@ -78,6 +80,7 @@ export default function Drink({ drink }) {
       size='small'
       variant="contained"
       color='secondary'
+      onClick={() => navigate(`/catalog/${drink.idDrink}`)}
       sx={{
         position: 'absolute',
         bottom: '10px',

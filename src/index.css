@@ -1,5 +1,6 @@
-body { 
+#root, body, html { 
   margin: 0px;
+  background-color: #242424;
 }
 
 /* main components animation  */
