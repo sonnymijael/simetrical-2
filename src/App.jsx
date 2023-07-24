@@ -1,34 +1,45 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import React from 'react'
+// Components
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { Suspense } from 'react'
+import { Loading } from './components'
+import { createTheme, ThemeProvider } from '@mui/material';
+// Pages
+const Home = React.lazy(() => import('./pages/Home'));
 
-function App() {
-  const [count, setCount] = useState(0)
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#f5f5f5', 
+    },
+    secondary: {
+      main: '#242424',
+    },
+  },
+  components: {
+    MuiInputBase: {
+      styleOverrides: {
+        input: {
+          color: '#f5f5f5',
+          '&::placeholder': {
+            color: '#f5f5f5',
+          },
+        },
+      },
+    },
+  }
+})
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          {/* <img src={viteLogo} className="logo" alt="Vite logo" /> */}
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+export default function App() {
+  return <ThemeProvider theme={theme}>
+    <BrowserRouter>
+      <Suspense fallback={<Loading />}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/drink" element={<div>Element</div>} />
+        </Routes>
+      </Suspense>
+    </BrowserRouter>
+  </ThemeProvider>
 }
 
-export default App
