@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react'
 import { Grid, TextField, Typography, Box, Stack, Button } from '@mui/material'
 import { makeRequest } from '../../helpers'
 import Category from '../../components/Category'
+import { toast } from 'react-toastify'
 import ItemCatalog from '../../components/ItemCatalog'
-// Files
+// 
 import bg from '../../assets/bgHome.jpeg'
 
 export default function Home () {
@@ -21,7 +22,12 @@ export default function Home () {
 
   const handleSearch = async () => {
     const { data: { drinks } } = await makeRequest(`search.php?s=${drinkName}`, 'get', {})
-    setDrinksResponse(drinks)
+    
+    if (!drinks || drinks.length === 0) {
+      toast.error('Don\'t have any drinks with that name' );
+    } else {
+      setDrinksResponse(drinks)
+    }
   }
 
   return <Box 

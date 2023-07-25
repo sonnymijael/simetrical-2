@@ -21,7 +21,7 @@ async function makeRequest(url, method, body = null, customHeaders = {}) {
 
 // Get random drinks
 function getRandomDrinks(drinks, count) {
-  let tempDrinks = [...drinks];
+  let tempDrinks = [...drinks]
   let result = [];
 
   for (let i = 0; i < count; i++) {
@@ -29,10 +29,10 @@ function getRandomDrinks(drinks, count) {
     
     let randomIndex = Math.floor(Math.random() * tempDrinks.length)
 
-    result.push(tempDrinks.splice(randomIndex, 1)[0]);
+    result.push(tempDrinks.splice(randomIndex, 1)[0])
   }
 
-  return result;
+  return result
 }
 
 export { makeRequest, getRandomDrinks }
